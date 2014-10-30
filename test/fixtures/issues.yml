@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: MyString
+  content: MyText
+  is_public: false
+  capacity: 1
+
+two:
+  topic: MyString
+  content: MyText
+  is_public: false
+  capacity: 1

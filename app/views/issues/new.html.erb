@@ -1,0 +1,6 @@
+<%= form_for @issue, :url => issues_path do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<p><%= link_to 'Back to index', issues_path %></p>

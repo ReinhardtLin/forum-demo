@@ -1,0 +1,8 @@
+<%= form_for @issue, :url => issue_path(@issue), :method => :patch do |f| %>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<p><%= link_to 'Back to issue', issue_path(@issue) %></p>
+<p><%= link_to 'Back to index', issues_path %></p>

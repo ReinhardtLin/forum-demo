@@ -1,0 +1,17 @@
+<%= @issue.topic %>
+<%= simple_format(@issue.content) %>
+<p><%= link_to 'Edit issue', edit_issue_path(@issue) %></p>
+<p><%= link_to 'Delete issue', issue_path(@issue), :method => :delete %></p>
+
+<ol>
+  <% @issue.replies.each do |reply| %>
+    <li>
+      <%= reply.content %>
+      <%= link_to 'Edit reply', edit_issue_reply_path(@issue, reply) %>
+      <%= link_to 'Delete reply', issue_reply_path(@issue, reply), :method => :delete %>
+    </li>
+  <% end %>
+</ol>
+
+<p><%= link_to 'Reply', new_issue_reply_path(@issue) %></p>
+<p><%= link_to 'Back to index', issues_path %></p>

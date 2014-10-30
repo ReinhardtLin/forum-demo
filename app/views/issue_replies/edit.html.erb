@@ -1,0 +1,7 @@
+<%= form_for @reply, :url => issue_reply_path(@issue, @reply), :html => { :method => :patch } do |f| %>
+   <%= f.text_field :content %>
+   <%= f.submit %>
+<% end %>
+
+<p><%= link_to 'Back to issue', issue_path(@issue) %></p>
+<p><%= link_to 'Back to index', issues_path %></p>

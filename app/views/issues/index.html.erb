@@ -1,0 +1,15 @@
+<table border = "1">
+  <% @issues.each do |issue| %>
+  <tr>
+    <td><%= issue.topic %></td>
+    <td><%= link_to 'Read', issue_path(issue) %></td>
+    <!-- <td><%= link_to 'Reply', issue_replies_path(issue) %></td> -->
+    <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+    <td><%= link_to 'Delete', issue_path(issue), :method => :delete %></td>
+    <td><%= issue.replies.size %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Issue', new_issue_path %>
+<%= paginate @issues %>

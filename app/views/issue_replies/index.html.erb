@@ -1,0 +1,14 @@
+<ul>
+<% @replies.each do |reply| %>
+  <li>
+    <%= reply.content %>
+    <%= link_to 'Read', issue_reply_path(@issue, reply) %>
+    <%= link_to 'Edit', edit_issue_reply_path(@issue, reply) %>
+    <%= link_to 'Destroy', issue_reply_path(@issue, reply),
+                              :method => :delete %>
+  </li>
+<% end %>
+
+</ul>
+
+    <%= link_to 'New Reply', new_issue_reply_path(@issue) %>
