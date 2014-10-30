@@ -1,3 +1,8 @@
+<%= form_tag search_issues_path, :method => :get do %>
+  <%= text_field_tag "keyword" %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table border = "1">
   <% @issues.each do |issue| %>
   <tr>
@@ -11,5 +16,5 @@
   <% end %>
 </table>
 
-<%= link_to 'New Issue', new_issue_path %>
+<%= link_to 'New issue', new_issue_path %>
 <%= paginate @issues %>

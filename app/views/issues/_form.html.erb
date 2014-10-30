@@ -3,3 +3,5 @@
 
 <%= f.label :content, "Content" %>
 <%= f.text_area :content %>
+
+<%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>

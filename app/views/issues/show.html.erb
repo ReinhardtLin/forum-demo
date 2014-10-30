@@ -1,5 +1,12 @@
 <%= @issue.topic %>
 <%= simple_format(@issue.content) %>
+
+<p>Category:
+  <% @issue.categories.each do |g| %>
+    <%= g.name %>
+  <% end %>
+</p>
+
 <p><%= link_to 'Edit issue', edit_issue_path(@issue) %></p>
 <p><%= link_to 'Delete issue', issue_path(@issue), :method => :delete %></p>
 

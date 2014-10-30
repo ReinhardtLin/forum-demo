@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   resources :issues do
     resources :replies, :controller => 'issue_replies'
+
+    collection do
+      get :search
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

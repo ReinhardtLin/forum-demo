@@ -41,10 +41,15 @@ class IssuesController < ApplicationController
     flash[:alert] = "issue was successfully deleted"
   end
 
+  def search
+    @issues = Issue.where( [ "topic like ?", "%#{params[:keyword]}%" ]).page(params[:page]).per(5)
+    render :action => :index
+  end
+
   private
 
   def issue_params
-    params.require(:issue).permit(:topic, :content)
+    params.require(:issue).permit(:topic, :content, :category_ids => [])
   end
 
   def set_issue
