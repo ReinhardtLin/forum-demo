@@ -7,6 +7,7 @@ gem 'rails', '4.1.6'
 gem 'sqlite3'
 
 gem 'kaminari'
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
