@@ -3,6 +3,9 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+<%= link_to 'Sort by Name', issues_path( :order => "topic") %>
+<%= link_to 'Sort by Updated', issues_path( :order => "updated_at") %>
+
 <table border = "1">
   <% @issues.each do |issue| %>
   <tr>

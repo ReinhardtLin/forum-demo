@@ -3,6 +3,8 @@ class IssuesController < ApplicationController
 
   def index
     @issues = Issue.page(params[:page]).per(5)
+    sort_by = (params[:order] == 'topic') ? 'topic' : 'updated_at'
+    @issues = Issue.order(sort_by).page(params[:page]).per(5)
   end
 
   def new
