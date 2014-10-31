@@ -29,7 +29,8 @@
       <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
       <td><%= link_to 'Delete', issue_path(issue), :method => :delete %></td>
     <% end %>
-    <td><%= issue.replies.size %></td>
+    <td><%= issue.replies_count %></td>
+    <td><%= issue.view_count %></td>
   </tr>
   <% end %>
 </table>

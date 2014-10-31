@@ -40,6 +40,8 @@ class IssuesController < ApplicationController
 
   def show
     @page_title = @issue.topic
+    @issue.view_count += 1
+    @issue.save
   end
 
   def edit
@@ -56,8 +58,9 @@ class IssuesController < ApplicationController
 
   def destroy
     @issue.destroy
-    redirect_to issues_url
     flash[:alert] = "issue was successfully deleted"
+
+    redirect_to issues_url
   end
 
   def search
