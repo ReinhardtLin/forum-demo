@@ -11,13 +11,18 @@
   <%= submit_tag "Search" %>
 <% end %>
 
-<%= link_to 'Sort by Name', issues_path( :order => "topic") %>
-<%= link_to 'Sort by Updated', issues_path( :order => "updated_at") %>
-
+<%= link_to 'Sort by Name', issues_path( combine_issues_condition(params,  :order => "topic" ) ) %>
+<%= link_to 'Sort by Updated', issues_path( combine_issues_condition(params,  :order => "updated_at" ) ) %>
+<%= link_to 'Sort by Updated DESC', issues_path( combine_issues_condition(params,  :order => "updated_at_desc" ) ) %>
 <table border = "1">
   <% @issues.each do |issue| %>
   <tr>
     <td><%= issue.topic %></td>
+    <td>
+      <% issue.categories.each do |c| %>
+        <%= link_to c.name, issues_path( combine_issues_condition(params,  :c => c.id ) ) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Read', issue_path(issue) %></td>
 
     <% if current_user == issue.user %>

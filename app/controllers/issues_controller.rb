@@ -3,9 +3,22 @@ class IssuesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @issues = Issue.page(params[:page]).per(5)
-    sort_by = (params[:order] == 'topic') ? 'topic' : 'updated_at'
-    @issues = Issue.order(sort_by).page(params[:page]).per(5)
+    if params[:c]
+      @category = Category.find(params[:c])
+      @issues = @category.issues
+    else
+      @issues = Issue.all
+    end
+
+    sort_by = if params[:order] == 'topic'
+        'topic'
+      elsif params[:order] == 'updated_at'
+        'updated_at'
+      elsif params[:order] == 'updated_at_desc'
+        'updated_at DESC'
+      end
+
+    @issues = @issues.order(sort_by).page(params[:page]).per(5)
   end
 
   def new
