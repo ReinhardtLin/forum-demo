@@ -1,5 +1,7 @@
 class IssueRepliesController < ApplicationController
+
   before_action :find_issue
+  before_action :authenticate_user!
 
   def index
     @replies = @issue.replies
@@ -15,7 +17,10 @@ class IssueRepliesController < ApplicationController
 
   def create
     @reply = @issue.replies.build( reply_params )
+    @issue.replies_count +=1
+
     if @reply.save
+      @issue.save
       redirect_to issue_replies_url( @issue )
     else
       render :action => :new
