@@ -14,6 +14,9 @@ class IssuesController < ApplicationController
 
   def create
     @issue = Issue.new(issue_params)
+
+    @issue.user = current_user
+
     if @issue.save
       redirect_to issues_url
       flash[:notice] = "issue was successfully created"

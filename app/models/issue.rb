@@ -4,4 +4,6 @@ class Issue < ActiveRecord::Base
 
   has_many :issue_categoryships
   has_many :categories, :through => :issue_categoryships
+
+  belongs_to :user
 end
